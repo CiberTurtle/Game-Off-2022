@@ -1,0 +1,17 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1667440144
+export_presets.cfg::TextFile::-1::1667438845::0::1::::<><>::
+icon.svg::CompressedTexture2D::6317149740533072886::1667438558::1667439280::1::::<><>::
+::res://assets/::1667440148
+::res://assets/art/::1667440155
+tile.png::CompressedTexture2D::2087803677894026306::1667440155::1667440158::1::::<><>::
+::res://resources/::1667439956
+placeholder.tres::PlaceholderTexture2D::4497179887223856305::1667439956::0::1::::<><>::
+tileset.tres::TileSet::2152868785886833497::1667439956::0::1::::<><>::uid://b5cp5popkptdh
+::res://scenes/::1667439956
+player.tscn::PackedScene::4681024922152758841::1667439784::0::1::::<><>::res://scripts/player.gd<>uid://cwacseqasakmw
+test_level.tscn::PackedScene::8870516588111119916::1667439956::0::1::::<><>::uid://b7xr2c3b5a5nh<>uid://5w4o1ekihifx
+::res://scripts/::1667439534
+player.gd::GDScript::-1::1667439534::0::1::::<>CharacterBody2D<>::
+::res://scripts/autoloads/::1667439176
+game_events.gd::GDScript::-1::1667439176::0::1::::<>Node<>::
