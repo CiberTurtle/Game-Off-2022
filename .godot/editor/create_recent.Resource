@@ -1,2 +1,4 @@
+CanvasItemMaterial
+Shader
 PlaceholderTexture2D
 TileSet

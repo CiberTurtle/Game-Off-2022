@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"Bomb",
 "language": &"GDScript",
 "path": "res://scripts/bomb.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://scripts/player.gd"
 }]
 _global_script_class_icons={
-"Bomb": ""
+"Bomb": "",
+"Player": ""
 }
 
 [application]
@@ -28,6 +34,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*res://scripts/autoloads/game_events.gd"
+Gloabls="*res://scripts/autoloads/gloabls.gd"
 
 [debug]
 
@@ -85,6 +92,12 @@ detonate={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_render/layer_1="Default"
+2d_render/layer_2="Wall"
+2d_render/layer_10="Background"
 
 [rendering]
 

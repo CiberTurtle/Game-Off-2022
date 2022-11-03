@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed := 64.0
 
@@ -7,6 +7,9 @@ extends CharacterBody2D
 var _move := Vector2.ZERO
 var _plant_bomb := false
 var _detonate := false
+
+func _enter_tree() -> void:
+	Gloabls.player = self
 
 func _process(delta: float) -> void:
 	_move.x = Input.get_axis('move_left', 'move_right')
@@ -32,9 +35,8 @@ func _physics_process(delta: float) -> void:
 
 func plant_bomb():
 	var bomb := bomb_scene.instantiate() as Bomb
-	bomb.position = position
-	
 	get_parent().add_child(bomb)
+	bomb.position = position
 
 func detonate():
 	GameEvents.detonate.emit()

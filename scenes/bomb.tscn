@@ -1,12 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmly1nb8wjyao"]
+[gd_scene load_steps=10 format=3 uid="uid://bmly1nb8wjyao"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_lgy2d"]
 [ext_resource type="Texture2D" uid="uid://cwacseqasakmw" path="res://icon.svg" id="2_frw42"]
+[ext_resource type="Texture2D" uid="uid://be6m8t6uvn1ha" path="res://assets/art/ring_128.png" id="4_35k2x"]
+[ext_resource type="Material" uid="uid://dl04gop2gsd1a" path="res://resources/additive.tres" id="4_fgxc3"]
+[ext_resource type="Texture2D" uid="uid://dq0drccn8e7r6" path="res://assets/art/circle_128.png" id="4_xohch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdg3d"]
+radius = 64.0
+
+[sub_resource type="Animation" id="Animation_clgsv"]
+resource_name = "explode"
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.266667, 0.0666667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_df6g0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0eprs"]
+_data = {
+"RESET": SubResource("Animation_df6g0"),
+"explode": SubResource("Animation_clgsv")
+}
 
 [node name="Bomb" type="Node2D"]
 script = ExtResource("1_lgy2d")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Bomb" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Bomb"]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_frw42")
+
+[node name="Area2D" type="Area2D" parent="Bomb"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb/Area2D"]
+shape = SubResource("CircleShape2D_vdg3d")
+
+[node name="PointLight2D" type="PointLight2D" parent="Bomb"]
+color = Color(1, 0, 0, 1)
+range_item_cull_mask = 512
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("4_xohch")
+
+[node name="Radius" type="Sprite2D" parent="Bomb"]
+modulate = Color(1, 0, 0, 0.5)
+material = ExtResource("4_fgxc3")
+z_index = -99
+z_as_relative = false
+texture = ExtResource("4_35k2x")
+
+[node name="Flash" type="Sprite2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_xohch")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0eprs")
+}
