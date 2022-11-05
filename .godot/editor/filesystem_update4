@@ -2,10 +2,5 @@ res://scenes/test_level.tscn
 res://resources/tileset.tres
 res://scenes/player.tscn
 res://scenes/bomb.tscn
-res://shaders/radius.gdshader
-res://scripts/bomb.gd
-res://scripts/player.gd
-res://resources/additive.tres
 res://scenes/enemy.tscn
 res://scripts/enemy.gd
-res://scripts/autoloads/gloabls.gd
